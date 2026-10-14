@@ -1,0 +1,258 @@
+/* ============================================================
+   ARIVEN — WEBFONTS
+   ------------------------------------------------------------
+   SUBSTITUTION NOTE: the original Ariven wordmark uses a custom
+   geometric grotesque (shipped as the logo PNG in /assets — use
+   that for the logo itself, never re-typeset it). For UI/headings
+   and body text we pair two open grotesques that carry the same
+   architectural, precise feel and full Lithuanian diacritics:
+     • Archivo        — display / headings (tight grotesque)
+     • Hanken Grotesk — body / UI (humanist, highly legible)
+   Loaded from the Google Fonts CDN (latin + latin-ext). If you
+   have licensed brand fonts, drop the woff2 files in /assets and
+   swap the src URLs below.
+   ============================================================ */
+
+
+/* ============================================================
+   ARIVEN — COLOR TOKENS
+   Brand: deep architectural navy on light, airy neutrals.
+   Derived from the wordmark (#0f2b45) and cool glass/sky imagery.
+   ============================================================ */
+
+:root {
+  /* --- Brand navy ramp (the wordmark color is --navy-700) --- */
+  --navy-900: #081a2b;
+  --navy-800: #0c2237;
+  --navy-700: #0f2b45;  /* core brand / logo */
+  --navy-600: #163a5c;
+  --navy-500: #1f4d76;
+  --navy-400: #356a96;
+
+  /* --- Steel / sky accent (drawn from glass reflections) --- */
+  --steel-700: #34597a;
+  --steel-600: #4a749a;
+  --steel-500: #6b93b5;
+  --steel-400: #9bb8d1;
+  --steel-350: #a9bdd4;  /* soft sky-steel */
+  --steel-300: #c4d6e6;
+  --steel-200: #e0eaf2;
+  --steel-100: #eef3f8;
+
+  /* --- Citron: warm highlight accent (use sparingly, on navy) --- */
+  --citron-600: #c7c14a;
+  --citron-500: #eee97b;  /* brand highlight */
+  --citron-300: #f4f0a6;
+  --citron-100: #faf8da;
+
+  /* --- Neutrals: cool-leaning paper & ink --- */
+  --white:     #ffffff;
+  --paper:     #f7f9fb;
+  --mist:      #eef1f4;
+  --cloud:     #e3e8ed;
+  --line-200:  #dde3e9;
+  --line-300:  #ccd5dd;
+  --slate-500: #5d6b78;
+  --slate-600: #45525d;
+  --slate-700: #313c46;
+  --ink:       #14222e;
+
+  /* --- Semantic status (used sparingly) --- */
+  --success-500: #2f7d63;
+  --success-100: #e3f0eb;
+  --warning-500: #b07a1e;
+  --warning-100: #f6ecd8;
+  --danger-500:  #b23b3b;
+  --danger-100:  #f6e2e2;
+
+  /* ============================================================
+     SEMANTIC ALIASES — reference these in components
+     ============================================================ */
+
+  /* Text */
+  --text-strong:    var(--navy-700);
+  --text-body:      var(--slate-700);
+  --text-muted:     var(--slate-500);
+  --text-inverse:   var(--white);
+  --text-on-accent: var(--white);
+  --text-link:      var(--navy-600);
+
+  /* Surfaces */
+  --surface-page:    var(--paper);
+  --surface-card:    var(--white);
+  --surface-sunken:  var(--mist);
+  --surface-tint:    var(--steel-100);
+  --surface-inverse: var(--navy-700);
+  --surface-inverse-2: var(--navy-800);
+
+  /* Brand */
+  --brand:           var(--navy-700);
+  --brand-hover:     var(--navy-600);
+  --brand-active:    var(--navy-800);
+  --accent:          var(--steel-600);
+  --accent-soft:     var(--steel-200);
+  --highlight:       var(--citron-500);
+  --highlight-soft:  var(--citron-100);
+
+  /* Lines & borders */
+  --border:        var(--line-200);
+  --border-strong: var(--line-300);
+  --border-on-dark: rgba(255, 255, 255, 0.16);
+
+  /* Focus ring */
+  --focus-ring: var(--steel-500);
+}
+
+/* ============================================================
+   ARIVEN — TYPOGRAPHY TOKENS
+   ============================================================ */
+
+:root {
+  /* Families */
+  --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:    'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Weights */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* Fluid type scale (clamp: min → preferred → max) */
+  --text-display:  clamp(2.75rem, calc(1.6rem + 4.6vw), 4.5rem);   /* hero */
+  --text-h1:       clamp(2.1rem, calc(1.4rem + 2.8vw), 3.25rem);
+  --text-h2:       clamp(1.65rem, calc(1.2rem + 1.9vw), 2.5rem);
+  --text-h3:       clamp(1.35rem, calc(1.1rem + 1.1vw), 1.75rem);
+  --text-h4:       1.25rem;
+  --text-lead:     clamp(1.05rem, calc(0.98rem + 0.4vw), 1.25rem);
+  --text-body-lg:  1.125rem;
+  --text-body-md:  1rem;
+  --text-body-sm:  0.875rem;
+  --text-caption:  0.75rem;
+  --text-overline: 0.75rem;
+
+  /* Line heights */
+  --leading-tight:   1.05;
+  --leading-snug:    1.18;
+  --leading-normal:  1.35;
+  --leading-relaxed: 1.6;
+
+  /* Letter spacing */
+  --tracking-tight:   -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.04em;
+  --tracking-overline: 0.22em;  /* the tagline lockup "PLĖVELĖS KLIJAVIMAS" */
+}
+
+/* ---- Optional helper classes (components may use raw tokens instead) ---- */
+.ds-display  { font-family: var(--font-display); font-weight: var(--weight-bold);
+               font-size: var(--text-display); line-height: var(--leading-tight);
+               letter-spacing: var(--tracking-tight); color: var(--text-strong); }
+.ds-h1       { font-family: var(--font-display); font-weight: var(--weight-bold);
+               font-size: var(--text-h1); line-height: var(--leading-snug);
+               letter-spacing: var(--tracking-tight); color: var(--text-strong); }
+.ds-h2       { font-family: var(--font-display); font-weight: var(--weight-semibold);
+               font-size: var(--text-h2); line-height: var(--leading-snug);
+               letter-spacing: var(--tracking-tight); color: var(--text-strong); }
+.ds-h3       { font-family: var(--font-display); font-weight: var(--weight-semibold);
+               font-size: var(--text-h3); line-height: var(--leading-snug);
+               color: var(--text-strong); }
+.ds-lead     { font-family: var(--font-body); font-weight: var(--weight-regular);
+               font-size: var(--text-lead); line-height: var(--leading-relaxed);
+               color: var(--text-body); }
+.ds-body     { font-family: var(--font-body); font-weight: var(--weight-regular);
+               font-size: var(--text-body-md); line-height: var(--leading-relaxed);
+               color: var(--text-body); }
+.ds-overline { font-family: var(--font-body); font-weight: var(--weight-semibold);
+               font-size: var(--text-overline); line-height: 1;
+               letter-spacing: var(--tracking-overline); text-transform: uppercase;
+               color: var(--text-muted); }
+
+/* ============================================================
+   ARIVEN — SPACING, RADII, SHADOWS, LAYOUT
+   8px base rhythm.
+   ============================================================ */
+
+:root {
+  /* Spacing scale */
+  --space-0:  0;
+  --space-1:  0.25rem;  /*  4px */
+  --space-2:  0.5rem;   /*  8px */
+  --space-3:  0.75rem;  /* 12px */
+  --space-4:  1rem;     /* 16px */
+  --space-5:  1.5rem;   /* 24px */
+  --space-6:  2rem;     /* 32px */
+  --space-7:  3rem;     /* 48px */
+  --space-8:  4rem;     /* 64px */
+  --space-9:  6rem;     /* 96px */
+  --space-10: 8rem;     /* 128px */
+
+  /* Radii — restrained, mostly soft-rectangular */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   18px;
+  --radius-xl:   28px;
+  --radius-pill: 999px;
+
+  /* Borders */
+  --border-width: 1px;
+
+  /* Shadows — cool-tinted, soft, low-contrast (like daylight on glass) */
+  --shadow-xs: 0 1px 2px rgba(15, 43, 69, 0.06);
+  --shadow-sm: 0 2px 8px rgba(15, 43, 69, 0.07);
+  --shadow-md: 0 10px 28px rgba(15, 43, 69, 0.10);
+  --shadow-lg: 0 24px 60px rgba(15, 43, 69, 0.14);
+  --shadow-focus: 0 0 0 3px rgba(107, 147, 181, 0.45);
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-pad: clamp(1.25rem, 5vw, 4rem);
+  --section-gap:   clamp(3.5rem, 8vw, 8rem);
+
+  /* Motion */
+  --ease-out:   cubic-bezier(0.22, 0.61, 0.36, 1);  /* @kind other */
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);     /* @kind other */
+  --dur-fast:   140ms;  /* @kind other */
+  --dur-base:   240ms;  /* @kind other */
+  --dur-slow:   420ms;  /* @kind other */
+}
+
+/* ============================================================
+   ARIVEN — BASE ELEMENT DEFAULTS
+   Light, opt-in resets so consumers get sensible defaults.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-body-md);
+  line-height: var(--leading-relaxed);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--text-strong);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 0.5em;
+}
+
+p { margin: 0 0 1em; text-wrap: pretty; }
+
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-xs);
+}
+
+::selection { background: var(--steel-200); color: var(--navy-800); }

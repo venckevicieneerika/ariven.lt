@@ -6,7 +6,6 @@ Ariven – plėvelės klijavimas. Svetainės šaltinio kodas.
 ```
 src/app.jsx + src/index.html + public/   →   npm run build   →   dist/   →   Hostinger public_html
 ```
-
 Build sukompiliuoja JSX, prerenderina puslapį į statinį HTML (Google mato visą turinį), įrašo DUK schemą ir sitemap datą.
 
 ## Vietinis darbas

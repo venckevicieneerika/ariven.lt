@@ -1,0 +1,35 @@
+# Publikavimas į Hostinger per FTP.
+# Šiuo metu paleidžiamas TIK RANKA: GitHub → Actions → "Publikuoti į Hostinger" → Run workflow.
+# Kai norėsite automatinio publikavimo po kiekvieno pakeitimo, atkomentuokite "push" bloką.
+name: Publikuoti į Hostinger
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: [main]
+
+concurrency:
+  group: hostinger-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --no-audit --no-fund
+      - run: npm run build
+      - name: Įkelti į Hostinger (public_html)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: /public_html/
+          dangerous-clean-slate: false
