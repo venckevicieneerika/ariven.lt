@@ -1,4 +1,4 @@
-# Publikavimas į Hostinger per FTP.
+# Publikavimas į Hostinger per FTPS.
 # Šiuo metu paleidžiamas TIK RANKA: GitHub → Actions → "Publikuoti į Hostinger" → Run workflow.
 # Kai norėsite automatinio publikavimo po kiekvieno pakeitimo, atkomentuokite "push" bloką.
 name: Publikuoti į Hostinger
@@ -30,6 +30,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
+          port: 21
           local-dir: ./dist/
           server-dir: /public_html/
           dangerous-clean-slate: false
