@@ -41,7 +41,7 @@ const UNS = (id, w) => `https://images.unsplash.com/photo-${id}?w=${w || 900}&q=
 const R = (id, fallback) => typeof window !== 'undefined' && window.__resources && window.__resources[id] || fallback;
 
 /* ----------------------------- data ----------------------------- */
-const TRUST = ['Matinė plėvelė', 'Veidrodinė plėvelė', 'Apsauginė plėvelė', 'Automobilių apklijavimas', 'Reklaminiai lipdukai', 'Plėvelės klijavimas', 'Dirbame Kaune'];
+const TRUST = ['Matinė plėvelė', 'Veidrodinė plėvelė', 'Apsauginė plėvelė', 'Automobilių apklijavimas', 'Reklaminiai lipdukai', 'Plėvelės klijavimas', 'Dirbame visoje Lietuvoje'];
 
 const ADV = [
 { ico: <Icon.shield />, t: 'Rūpinamės visu procesu', d: 'Konsultuojame, kuriame dizainą, gaminame, ir klijuojame – pasirūpiname visu procesu, kad Jūms nereikėtų rūpintis detalėmis.' },
@@ -195,7 +195,7 @@ function Hero() {
   return (
     <section className="container hero" id="top">
       <div className="hero__copy">
-        <span className="eyebrow reveal">DIRBAME KAUNE</span>
+        <span className="eyebrow reveal">DIRBAME VISOJE LIETUVOJE</span>
         <h1 className="hero__title reveal rd1" style={{ fontSize: "clamp(2.25rem, 9vw, 65px)", fontWeight: 500 }}>Plėvelės klijavimo sprendimai{" "}<br />Jūsų <span className="squig squig--citron">namams<svg viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9c16-3 28 1 44 2s34-4 48-3 18 2 24 1" /></svg></span>{" "}<br />ir <span className="squig squig--steel">verslui<svg viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9c16-3 28 1 44 2s34-4 48-3 18 2 24 1" /></svg></span></h1>
         <p className="hero__lead reveal rd2" style={{ fontSize: "16px" }}>Skirtingos erdvės – skirtingi poreikiai. Nuo subtilių matinių plėvelių, suteikiančių privatumą biuruose, iki sprendimų, kurie namuose išlaiko vėsą ir šviesą.</p>
         <div className="pill-nav reveal rd4">
@@ -706,7 +706,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer__top">
-        <span className="eyebrow eyebrow--light">DIRBAME KAUNE</span>
+        <span className="eyebrow eyebrow--light">DIRBAME VISOJE LIETUVOJE</span>
         <p className="footer__say">Plėvelės sprendimai Jūsų <span className="squig squig--citron">namams<svg viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9c16-3 28 1 44 2s34-4 48-3 18 2 24 1" /></svg></span> ir <span className="squig squig--steel">verslui<svg viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9c16-3 28 1 44 2s34-4 48-3 18 2 24 1" /></svg></span> vienoje vietoje</p>
         <div className="footer__reach">
           <a className="footer__big" href="tel:+37065030672">+370 650 30672</a>
