@@ -460,7 +460,7 @@ function CtaForm() {
       <form onSubmit={submit}>
         <div className="form-row">
           <Field label={<React.Fragment>Vardas <span className="req-mark">*</span></React.Fragment>} htmlFor="cta-vardas"><Input id="cta-vardas" name="vardas" placeholder="Jūsų vardas" required /></Field>
-          <Field label={<React.Fragment>Telefonas <span className="req-mark">*</span></React.Fragment>} htmlFor="cta-tel"><Input id="cta-tel" name="tel" type="tel" placeholder="0 6__ _____" required /></Field>
+          <Field label={<React.Fragment>Telefonas <span className="req-mark">*</span></React.Fragment>} htmlFor="cta-tel"><Input id="cta-tel" name="tel" type="tel" placeholder="+3706" required /></Field>
         </div>
         <div className="form-single">
           <Field label="El. paštas" htmlFor="cta-el"><Input id="cta-el" name="el" type="email" placeholder="vardas@pastas.lt" /></Field>
