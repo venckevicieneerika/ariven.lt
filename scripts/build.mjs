@@ -3,6 +3,7 @@
 //    so Googlebot sees all content without JavaScript, 4) fills FAQ schema + sitemap date.
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { build } from 'esbuild';
 import puppeteer from 'puppeteer';
 import { startServer } from './serve.mjs';
@@ -64,7 +65,12 @@ try {
   const ld = faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } }));
   const out = template
     .replace('<!--PRERENDER-->', clean)
-    .replace('"__FAQ__"', JSON.stringify(ld).replace(/</g, '\\u003c'));
+    .replace('"__FAQ__"', JSON.stringify(ld).replace(/</g, '\\u003c'))
+    // ?v=<hash>, kad naršyklės po kiekvieno pakeitimo parsisiųstų naują CSS/JS (talpykla 30 d.)
+    .replace(/(href|src)="((?:css|js)\/[^"?]+)"/g, (m, attr, file) => {
+      const hash = crypto.createHash('md5').update(fs.readFileSync(path.join(DIST, file))).digest('hex').slice(0, 8);
+      return `${attr}="${file}?v=${hash}"`;
+    });
   fs.writeFileSync(path.join(DIST, 'index.html'), out);
   console.log(`✓ dist/ paruoštas · ${Math.round(out.length / 1024)} KB index.html · ${faq.length} DUK · sitemap ${today}`);
 } finally {
